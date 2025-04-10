@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="usuario/css/estilo-us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   <title>Registro</title>
+</head>
+<header>
+  
+
+</header> 
+
+<body>
+
+<main>
+
+<div class="contenedor-principal">
+
+  <h1>Registro</h1>
+  <p class="centrar-texto">Formulario de registro</p>
+
+  <form action="#" method="POST" class="formulario">
+   
+  
+    <fieldset>
+      <legend>Datos Personales</legend>
+      <label for="primer-n">Primer Nombre:</label>
+      <input type="text"  name="primer-n" placeholder="Ingresa tu primer nombre" required>
+
+      <label for="segundo-n">Segundo Nombre:</label>
+      <input type="text" id="nombre" name="segundo-n" placeholder="Ingresa tu segundo nombre" required>
+
+      <label for="primer-a">Primer apellido:</label>
+      <input type="text" id="nombre" name="primer-a" placeholder="Ingresa tu primer apellido" required>
+
+      <label for="primer-a">Segundo apellido:</label>
+      <input type="text" id="nombre" name="segundo-a" placeholder="Ingresa tu segundo apellido" required>
+
+      <label for="telefono">Número de Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" required>
+
+      
+
+      <label for="tipo-documento">Tipo de Documento:</label>
+      <select id="tipo-documento" name="tipo-documento" required>
+        <option value="">-- Seleccione una opción --</option>
+        <option value="cedula">Cédula</option>
+        <option value="cedula">Cédula extranjera</option>
+        <option value="pasaporte">Pasaporte</option>
+        <option value="otro">Otro</option>
+      <label for="documento">Número de Documento:</label>
+        <input type="text" id="documento" name="documento" placeholder="Ingresa el número de documento" required>
+
+
+    </fieldset>
+
+    
+    <fieldset>
+      <legend>Información del Vehículo</legend>
+      <label for="placa">Placa del Vehículo:</label>
+      <input type="text" id="placa" name="placa" placeholder="Ingresa la placa" required>
+
+      <label for="marca-modelo-color">Marca, Modelo y Color:</label>
+      <input type="text" id="marca-modelo-color" name="marca-modelo-color" placeholder="Ej: Toyota Corolla Rojo" required>
+
+      <label for="tipo">Tipo de Vehículo:</label>
+      <select id="tipo" name="tipo" required>
+        <option value="">Seleccione una opción</option>
+        <option value="moto">Moto</option>
+        <option value="carro">Carro</option>
+        <option value="camioneta">Camioneta</option>
+        <option value="otros">Otros</option>
+      </select>
+    </fieldset>
+
+    
+    <input type="submit" value="Registrar">
+  </form>
+
+</div>
+
+</main>
+
+<footer>
+
+</footer>
+
+</body>
+</html>

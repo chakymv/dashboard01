@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/admin/css/estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <title>Usuarios y vehiculos</title>
+</head>
+<body>
+   <header>
+   <div class="sidebar" id="sidebar">
+  <div class="logo">
+    <img src="/imagenes/logo-grande.png" alt="Logo Grande" class="logo-expandido">
+    <img src="/imagenes/logo-mini.png" alt="Logo Miniatura" class="logo-compacto">
+  </div>
+  <ul>
+    <li><a href="index.html"><i class="fas fa-home"></i><span class="menu-text">Inicio</span></a></li>
+    <li class="submenu">
+      <a href="#"><i class="fa-solid fa-list-check"></i> <span class="menu-text">Gestionar</span></a>
+      <ul>
+        <li><a href="usuarios_p.html"><i class="fa-solid fa-users-between-lines"></i><span class="menu-text">Usuarios Parqueadero</span></a></li>
+        <li><a href="#"><i class="fa-solid fa-calendar-days"></i><span class="menu-text">Turnos del Operador</span></a></li>
+        
+      </ul>
+    </li>
+
+    <li class="submenu">
+        <a href="#"><i class="fa-solid fa-user-tie"></i><span class="menu-text">Administrar</span></a>
+        <ul>
+          <li><a href="crear_zonas.html"><i class="fa-solid fa-square-parking"></i><span class="menu-text">Crear Parqueaderos</span></a></li>
+          <li><a href="crear_celdas.html"><i class="fa-solid fa-square-parking"></i><span class="menu-text">Crear Estacionamientos</span></a></li>  
+        <li><a href="crear_usuarios.html"><i class="fa-solid fa-user-tie"></i><span class="menu-text">Usuarios del sistema </span></a></li>
+          <li><a href="#"><i class="fa-solid fa-gear"></i><span class="menu-text">Configuracion</span></a></li>
+         </ul>
+      </li>
+
+    <li><a href="#"><i class="fa-solid fa-headset"></i><span class="menu-text">Soporte</span></a></li>
+  </ul>
+</div>
+
+
+<nav class="navbar">
+    <ul class="navbar-menu">
+      
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Servicios</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Enlace</a></li>
+        
+        </ul>
+      </li>
+      <li><a href="#">Cerrar Sesion</a></li>
+     
+    </ul>
+  </nav>
+
+
+  <div class="contenido-principal">
+    <h1 class="centrar">Gestionar usuarios y vehiculos registrados</h1>
+    <p class="centrar">El operario podra actualizar datos de los usuarios y vehiculos registrados</p>
+<hr class="linea-windows">
+   
+<div id="modal" class="modal">
+    <div class="contenido-modal">
+      <div class="encabezado-modal">
+        <h2>Actualizacion de datos de usuario y vehiculo</h2>
+  
+      </div>
+      <hr class="linea-windows">
+      <div class="cuerpo-modal">
+
+        <form action="#" method="POST" class="formulario">
+            <fieldset>
+              <legend>Datos Personales</legend>
+              <label for="primer-n">Primer Nombre:</label>
+              <input type="text" name="primer-n" placeholder="Ingresa tu primer nombre" required>
+              
+              <label for="segundo-n">Segundo Nombre:</label>
+              <input type="text" id="segundo-n" name="segundo-n" placeholder="Ingresa tu segundo nombre">
+    
+              <label for="primer-a">Primer Apellido:</label>
+              <input type="text" id="primer-a" name="primer-a" placeholder="Ingresa tu primer apellido" required>
+    
+              <label for="segundo-a">Segundo Apellido:</label>
+              <input type="text" id="segundo-a" name="segundo-a" placeholder="Ingresa tu segundo apellido">
+    
+              <label for="telefono">Número de Teléfono:</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" required>
+    
+              <label for="tipo-documento">Tipo de Documento:</label>
+              <select id="tipo-documento" name="tipo-documento" required>
+                <option value="">-- Seleccione una opción --</option>
+                <option value="cedula">Cédula</option>
+                <option value="extranjera">Cédula Extranjera</option>
+                <option value="pasaporte">Pasaporte</option>
+              </select>
+    
+              <label for="documento">Número de Documento:</label>
+              <input type="text" id="documento" name="documento" placeholder="Ingresa tu documento" required>
+
+            
+
+            </fieldset>
+            
+      
+            <button type="button" id="agregarvehiculo">Agregar Vehiculo</button>
+            
+            <fieldset id="vehiculoFields">
+                <legend>Información de los Vehículos</legend>
+               
+            </fieldset>
+          
+            <button type="submit" class="boton"><i class="fa-solid fa-arrows-rotate"></i> Actualizar</button>
+            
+            
+          </form>
+    
+
+</div>
+<div class="pie-modal">
+  <button class="cerrar" id="cerrarModal"><i class="fa-solid fa-xmark"></i></button>
+  
+</div>
+</div>
+</div>
+
+<div class="filtros">
+   
+    <input type="text" id="buscadorplaca" placeholder="Buscar por placa...">
+    <input type="date" id="filtroFecha">
+ 
+  </div>
+
+
+  <table class="tabla-usuarios">
+    <thead>
+      <tr>
+        <th>Nombres y apellidos</th>
+        <th>E-mail</th>
+        <th>Tipo de documento</th>
+        <th>N° Documento</th>
+        <th>N° Telefono</th>
+        <th>Placa</th>
+        <th>Marca,Modelo,Color</th>
+        <th>Tipo de vehiculo</th>
+        <th>Zona</th>
+        <th>Celda</th>
+        
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaCuerpo">
+      <tr>
+        <td>Carlos Parra</td>
+        <td>carlos145@mail.com</td>
+        <td>Cedula</td>
+        <td>123456055</td>
+        <td>3246892004</td>
+        <td>DMZ-123</td>
+        <td>MAZDA,CX-50,ROJO</td>
+        <td>Carro</td>
+        <th>P1</th>
+        <th>E1</th>
+        <td>
+            
+            <button id="abrirModal" class="botones-min btn-editar"><i class="fa-solid fa-pen"></i></button>
+            <button class="botones-min btn-eliminar "><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+      <tr>
+        <td>Oswaldo Garcia</td>
+        <td>oswaldo@mail.com</td>
+        <td>Cedula</td>
+        <td>123456789</td>
+        <td>3246892004</td>
+        <td>UDP-456</td>
+        <td>MAZDA,CX-60,BLANCO</td>
+        <td>Carro</td>
+        <th>P1</th>
+        <th>E4</th>
+     <td>
+            <button class="botones-min btn-editar"><i class="fa-solid fa-pen"></i></button>
+            <button class="botones-min btn-eliminar "><i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+    
+</div>
+
+
+</header> 
+
+<script>
+
+const sidebar = document.getElementById("sidebar");
+
+sidebar.addEventListener("mouseenter", () => {
+  sidebar.classList.add("expanded"); 
+});
+
+sidebar.addEventListener("mouseleave", () => {
+  sidebar.classList.remove("expanded"); 
+});
+
+//Iniciar script del navbar
+const toggle = document.getElementById("navbar-toggle");
+const menu = document.getElementById("navbar-menu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active"); 
+});
+
+ $(document).ready(function() {
+            $('#tabla-estacionamientos').DataTable();
+        });
+
+ </script>
+
+<script>
+    const modal = document.getElementById('modal');
+  const abrirModal = document.getElementById('abrirModal');
+  const cerrarModal = document.getElementById('cerrarModal');
+  
+  abrirModal.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    modal.style.display = 'flex';
+  });
+  
+  cerrarModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+    </script>
+  
+
+<script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  
+    const botonAgregarVehiculo = document.getElementById('agregarvehiculo');
+    const contenedorVehiculos = document.getElementById('vehiculoFields');
+    let contadorVehiculos = 0;
+    const maximoVehiculos = 2;
+
+
+    botonAgregarVehiculo.addEventListener('click', () => {
+        if (contadorVehiculos < maximoVehiculos) {
+            contadorVehiculos++; 
+           const contenedorFormulario = document.createElement('div');
+            contenedorFormulario.innerHTML = `
+                <h3>Vehículo ${contadorVehiculos}</h3>
+                <hr class="linea-windows">
+                <label for="placa${contadorVehiculos}">Placa del Vehiculo:</label>
+                <input type="text" id="placa${contadorVehiculos}" name="placa${contadorVehiculos}" placeholder="Ingresa la placa" required>
+                
+                <label for="marcaModeloColor${contadorVehiculos}">Marca, Modelo y Color:</label>
+                <input type="text" id="marcaModeloColor${contadorVehiculos}" name="marcaModeloColor${contadorVehiculos}" placeholder="Ej: Toyota Corolla Rojo">
+                
+                <label for="tipoVehiculo${contadorVehiculos}">Tipo de Vehiculo:</label>
+                <select id="tipoVehiculo${contadorVehiculos}" name="tipoVehiculo${contadorVehiculos}" required>
+                    <option value="">Seleccione una opcion</option>
+                    <option value="moto">Moto</option>
+                    <option value="carro">Carro</option>
+                    <option value="camioneta">Camioneta</option>
+                </select>
+                <hr class="linea-windows">
+                <button type="button" class="eliminarVehiculo btn-eliminar"><i class="fa-solid fa-eraser"></i></button>
+            `;
+            const botonEliminar = contenedorFormulario.querySelector('.eliminarVehiculo');
+            botonEliminar.addEventListener('click', () => {
+                contenedorVehiculos.removeChild(contenedorFormulario);
+                contadorVehiculos--;
+            });
+           
+            contenedorVehiculos.appendChild(contenedorFormulario);
+        } else {
+            
+            alert(`Solo puedes agregar un maximo de ${maximoVehiculos} vehiculos.`);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
