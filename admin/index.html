@@ -22,13 +22,31 @@
         <li>
           <a href="index.html"><i class="fas fa-home"></i><span class="menu-text">Inicio</span></a>
         </li>
+
+
+        <li class="submenu">
+          <a href="#"><i class="fa-solid fa-list-check"></i>
+            <span class="menu-text">Parqueaderos</span></a>
+          <ul>
+
+            <li>
+              <a href="historico.html"><i class="fa-solid fa-book-open"></i><span class="menu-text">Historico</span></a>
+            </li>
+
+            <li>
+              <a href="historico.html"><i class="fa-solid fa-book-open"></i><span class="menu-text">Historico</span></a>
+            </li>
+           
+          </ul>
+        </li>
+
+
         <li class="submenu">
           <a href="#"><i class="fa-solid fa-list-check"></i>
             <span class="menu-text">Gestionar</span></a>
           <ul>
             <li>
-              <a href="usuarios_p.html"><i class="fa-solid fa-users-between-lines"></i><span class="menu-text">Usuarios
-                  Parqueadero</span></a>
+              <a href="historico.html"><i class="fa-solid fa-book-open"></i><span class="menu-text">Historico</span></a>
             </li>
             <li>
               <a href="#"><i class="fa-solid fa-calendar-days"></i><span class="menu-text">Turnos del
@@ -45,7 +63,7 @@
                   Parqueaderos</span></a>
             </li>
             <li>
-              <a href="crear_celdas.html"><i class="fa-solid fa-square-parking"></i><span class="menu-text">Crear
+              <a href="crear_celdas.html"><i class="fa-solid fa-expand"></i><span class="menu-text">Crear
                   Zonas</span></a>
             </li>
             <li>
@@ -78,12 +96,15 @@
   </header>
 
   <main>
+ 
+   
     <div class="contadores">
       <div class="columnas">
         <div class="contenedor-grafico">
           <canvas id="graficoCircular"></canvas>
         </div>
       </div>
+
 
       <div class="columnas">
         <div class="contenedor-grafico">
@@ -97,6 +118,7 @@
         </div>
       </div>
     </div><!-- Finaliza contadores -->
+
 
     <div class="caja-oscura">
       <div class="columnas">
@@ -120,9 +142,9 @@
 
       <div class="columnas">
         <div class="botonera">
-          <p>Ver los manual disponibles</p>
-          <button class="btn-agregar">
-            Manual de uso <i class="fa-solid fa-book"></i>
+          <p>Para dar ingreso y salida de vehiculos</p>
+          <button class="btn-agregar"> <a href="operar.html">
+           Operar S/E  <i class="fa-solid fa-building-shield"></i></a>
           </button>
         </div>
       </div>
@@ -539,7 +561,7 @@
 
     // Totalidad de vehiculos //
     const config = {
-      type: "pie",
+      type: "doughnut",
       data: data,
       options: {
         responsive: true,
@@ -560,7 +582,7 @@
 
 
     const config2 = {
-      type: "pie",
+      type: "doughnut",
       data: data2,
       options: {
         responsive: true,
@@ -578,7 +600,7 @@
     const graficoIncidencias = new Chart(ctx2, config2);
 
     const config3 = {
-      type: "pie",
+      type: "doughnut",
       data: data3,
       options: {
         responsive: true,
